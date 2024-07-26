@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  padding: 0px !important;
+  margin: 0px !important;
+  overflow-x: hidden;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%23002155' cx='50' cy='0' r='50'/%3E%3Cg fill='%23012159' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%2303205e' cx='50' cy='100' r='50'/%3E%3Cg fill='%23042062' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%23061f65' cx='50' cy='200' r='50'/%3E%3Cg fill='%23081f69' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%230a1e6d' cx='50' cy='300' r='50'/%3E%3Cg fill='%230d1d70' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%230f1d73' cx='50' cy='400' r='50'/%3E%3Cg fill='%23121c76' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%23141c79' cx='50' cy='500' r='50'/%3E%3Cg fill='%23171c7c' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%231a1c7e' cx='50' cy='600' r='50'/%3E%3Cg fill='%23201e81' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%23262183' cx='50' cy='700' r='50'/%3E%3Cg fill='%232d2585' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23332887' cx='50' cy='800' r='50'/%3E%3Cg fill='%233a2c89' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%2340308a' cx='50' cy='900' r='50'/%3E%3Cg fill='%2347358c' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%234D398D' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: contain;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  width: 100vw !important; 
+  overflow-x: hidden !important;
+
+  /* font-family: 'Big Shoulders Stencil Text'; */ 
+}
+*:focus {
+  box-shadow: none !important;
+}
+.HeroText { 
+  font-family: "Big Shoulders Stencil Text",   !important;
+}
+.tabItemStyle {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #1e1c1c !important;
+  padding: 0.5rem !important;
+}
+
+.commonBg {
+  padding: 0px !important;
+  margin: 0px !important;
+  overflow-x: hidden;
+  background-image: url("../../public/backgrounds/corporate.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@layer utilities {
+  .btn {
+    @apply w-40 text-center py-2.5 cursor-pointer rounded-md bg-primary hover:bg-primary/80 border-none text-white font-medium text-base;
+  }
+  .layout{
+    @apply w-full h-full  max-w-[1148px] mx-auto px-2 xxs:px-4 xs:px-8 xl:px-0;
+  }
+}
+
+
+.bottom-top{
+  animation: bottom-top 15s linear infinite;
+}
+.bottom-top:hover{
+  animation-play-state: paused; 
+}
+
+@keyframes bottom-top {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  } 
+}
+
+.customeHtml ul,
+.customeHtml ol {
+  list-style:decimal;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+.customeHtml ul li,
+.customeHtml ol li { 
+  margin-bottom: 0.5rem !important;
+}
