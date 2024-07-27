@@ -6,11 +6,20 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
 export const metadata: Metadata = {
   title: "Events",
   openGraph: {
     title: " Events - CFI, JGEC",
     description: "Stay updated with the latest events and workshops organized by the Centre for Innovation, JGEC. Register now and be a part of the innovation.",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Events - CFI, JGEC",
+      },
+    ],
     url: "/events",
     type: "website",
   }
@@ -39,6 +48,7 @@ const Events: React.FC = async () => {
                       alt="event"
                       width={500}
                       height={500}
+                      priority
                       className="rounded-lg w-full h-auto object-cover"
                     />
                   </div>
@@ -52,7 +62,7 @@ const Events: React.FC = async () => {
                     <div
                       className=" customeHtml text-white opacity-85 mb-4 line-clamp-4"
                       dangerouslySetInnerHTML={{ __html: event.description }}
-                    />  
+                    />
                     <p className="text-lg text-white mb-2">
                       Event Date & Time: {event.date}, {event.event_start_time} - {event.event_end_time}
                     </p>
@@ -79,7 +89,7 @@ const Events: React.FC = async () => {
           <div className="w-full min-h-[26rem] grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {events.filter((e: eventCardType) => e.isCompleted === true).map((event: eventCardType) => (
               <EventsCard key={event._id} {...event} />
-            ))} 
+            ))}
           </div>
         </div>
       </div>

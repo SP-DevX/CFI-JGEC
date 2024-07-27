@@ -7,8 +7,16 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Alumni ",
   openGraph: {
-    title: "Our Alumni - Centre For Innovation",
+    title: "Our Alumni - CFI",
     description: "Meet our most talented and wonderful Alumni who are working hard to make CFI better. Meet them and know more about them.",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Alumni",
+      },
+    ],
     url: "/alumni",
     type: "website",
   },

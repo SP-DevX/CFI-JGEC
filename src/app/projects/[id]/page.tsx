@@ -1,4 +1,5 @@
 import Title from "@/components/common/Title";
+import RedirectBtn from "@/components/projects/RedirectBtn";
 import axios from "axios";
 import Image from "next/image";
 import React from "react";
@@ -10,18 +11,18 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     );
     const {
         _id,
-        projectName, 
+        projectName,
         files,
-        projectDescription, 
-    } = data; 
+        projectDescription,
+    } = data;
     return {
-        title: projectName? projectName : "Project Details",
+        title: projectName ? projectName : " Project Details",
         openGraph: {
-            title: projectName ? projectName + "Project - CFI" : "Project Details - CFI",
-            description: projectDescription ? projectDescription.replace("<p>", "").replace("</p>", "").slice(0,300)+"..." : "Check out the project details",
+            title: projectName ? projectName + " Project - CFI" : "Project Details - CFI",
+            description: projectDescription ? projectDescription.replace("<p>", "").replace("</p>", "").slice(0, 140) + "..." : "Check out the project details",
             images: [
                 {
-                    url: files? files[0] : "/og.jpg",
+                    url: files ? files[0] : "/og.jpg",
                     width: 1200,
                     height: 630,
                     alt: "Projects",
@@ -94,18 +95,12 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
                         <h1 className="text-xl xs:text-2xl md:text-3xl font-semibold border-b pb-1.5 xs:pb-3 mb-4 mt-8">
                             Project Demo
                         </h1>
-                        <a
-                            href={liveLink}
-                            target="_blank"
-                            className="text-primary font-semibold mb-3 "
-                        >
-                            Click here to view demo
-                        </a>
-                        <iframe
+                        <RedirectBtn link={liveLink} text="Click here to view demo" />
+                        {liveLink && <iframe
                             width="420"
-                            src="https://www.youtube.com/embed/tgbNymZ7vqY"
+                            src={liveLink}
                             className="w-full h-60 sm:h-[20rem] md:h-[25rem] lg:h-[30rem] object-cover rounded-lg mt-6"
-                        ></iframe>
+                        ></iframe>}
                     </div>
                 </div>
             </div>

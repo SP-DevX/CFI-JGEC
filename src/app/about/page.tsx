@@ -12,6 +12,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About - Centre For Innovation, JGEC",
     description: "Our mission is to create a transformation learning experience for students, bridging the gap between theory and practice. By providing a dynamic platform for innovation and problem-solving, we empower students to apply their academic knowledge to real-world scenarios, making a positive impact on society. Nurturing their visionary projects from conception to reality, we offer comprehensive support, including mentoring, team formation, funding, and publicity.",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "About - Centre For Innovation, JGEC",
+      },
+    ],
+    url: "/about",
+    type: "website",
   }
 }
 

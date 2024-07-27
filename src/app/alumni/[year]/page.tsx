@@ -9,6 +9,14 @@ export async function generateMetadata({ params }: { params: { year: string } })
         openGraph: {
             title: `${year} Batch Alumni - CFI`,
             description: `Meet our ${year} batch alumni who are working hard to make CFI better. Meet them and know more about them.`,
+            images: [
+                {
+                    url: "/og.jpg",
+                    width: 1200,
+                    height: 630,
+                    alt: `${year} Batch`,
+                },
+            ],
             url: `/alumni/${year}`,
             type: "website",
         }

@@ -24,8 +24,7 @@ const ImageCard: React.FC<{ photo: galleryPhotoType }> = ({ photo }) => {
                 alt="gallery"
                 width={250}
                 height={250}
-                loading="lazy"
-                unoptimized={true}
+                loading="lazy" 
                 className="w-full h-auto object-cover "
             />
             <div className="w-full text-gray-600 flex items-center">

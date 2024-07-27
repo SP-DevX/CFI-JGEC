@@ -1,8 +1,11 @@
- 
-import { InitiativesType } from '@/type'
+
 import React from 'react'
 import { GiCheckMark } from 'react-icons/gi'
 
+type InitiativesType = {
+  header: string,
+  details: string
+}
 
 const Initiatives: React.FC<InitiativesType> = ({ header, details }) => {
   return (

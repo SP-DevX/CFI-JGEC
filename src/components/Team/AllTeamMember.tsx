@@ -1,12 +1,10 @@
 
 import React from "react";
-import MemberCard from "../common/MemberCard";
-import { membersType } from "@/type";
+import MemberCard from "../common/MemberCard"; 
 import { getMembers } from "@/helpers/FetchMembers";
 
 const AllTeamMember = async () => {
-    const teamMembers = await getMembers();
-    console.log(teamMembers);
+    const teamMembers = await getMembers(); 
     return (
         <>
             <div className="layout grid grid-cols-2 md:grid-cols-3 mlg:grid-cols-4 gap-8 p-8">

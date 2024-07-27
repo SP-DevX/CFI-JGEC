@@ -1,8 +1,6 @@
-import { InitiativesType } from "@/type";
 
- 
 
-export const InitiativeList: InitiativesType[] = [
+export const InitiativeList = [
     {
         header: "Technical development",
         details: "We mentor students and enhance their technical skills by providing them with the necessary resources and guidance to work on projects and participate in competitions."

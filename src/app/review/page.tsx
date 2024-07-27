@@ -31,7 +31,7 @@ const Review: React.FC = async () => {
             <Title title={`Review`} />
             <div className="layout ">
                 <div className="w-full max-w-xl mx-auto bg-white min-h-40 rounded-lg my-4 mb-8 p-8 py-5 ">
-                    <h1 className="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Give your Review </h1>
+                    <h1 className="text-2xl font-semibold text-gray-800 border-b pb-2 mb-4">Give Review </h1>
                     <Formik
                         initialValues={{ name: "", email: "", profession: "", message: "" }}
                         onSubmit={handelSubmit}

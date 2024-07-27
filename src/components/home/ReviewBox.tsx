@@ -1,23 +1,34 @@
+
 "use client";
 
-import { FC, useRef } from "react";
+import { testimonialList } from "@/utils/testimonial";
+import React, { useEffect, useRef } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import {
     StackedCarousel,
     ResponsiveContainer,
 } from "react-stacked-center-carousel";
-import Image from "next/image";
-import Quote from "@/assets/openquote.svg"; 
+import TestimonialCard from "./TestimonialCard";
 
-const ReviewBox: FC<{ data: any[] }> = ({ data }) => {
+const ReviewBox = ({ data }: { data: testimonialType[] }) => {
     const ref = useRef();
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (ref.current) {
+                // @ts-ignore
+                ref.current.goNext();
+            }
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+    
     return (
-        <div>
-            <div id="testi" className="w-1/2">
+        <>
+            <div id="testi" className="w-full mlg:w-1/2">
                 <ResponsiveContainer
                     carouselRef={ref}
-                    render={(parentWidth, carouselRef) => {
-                        let currentVisibleSlide = 3;
+                    render={(parentWidth, carouselRef) => { 
+                        let currentVisibleSlide = parentWidth <= 370 ? 1 : 3;
                         return (
                             <div
                                 style={{
@@ -36,10 +47,10 @@ const ReviewBox: FC<{ data: any[] }> = ({ data }) => {
                                 </button>
                                 <StackedCarousel
                                     ref={carouselRef}
-                                    slideComponent={Testimonial}
-                                    slideWidth={parentWidth * 2.5}
+                                    slideComponent={TestimonialCard}
+                                    slideWidth={parentWidth <= 370 ? parentWidth * 0.8 : parentWidth * 2.5}
                                     carouselWidth={parentWidth}
-                                    data={data}
+                                    data={data.length > 0 ? data : testimonialList}
                                     currentVisibleSlide={currentVisibleSlide}
                                     maxVisibleSlide={5}
                                     useGrabCursor
@@ -56,33 +67,7 @@ const ReviewBox: FC<{ data: any[] }> = ({ data }) => {
                     }}
                 />
             </div>
-        </div>
-    );
-};
-
-
-
-const Testimonial = ({
-    data,
-    dataIndex,
-}: {
-    data: any[];
-    dataIndex: number;
-}) => { 
-    const { name, message, profession } = data[dataIndex];
-    console.log(name, message, profession); 
-    return (
-        <div className="w-[280px] mx-auto h-[350px] bg-white rounded-[10px] p-[20px] flex flex-col shadow-sm  items-start gap-[10px]">
-            <Image src={Quote} width={50} height={50} alt="Quote" className="w-8" />
-            <p className="text-sm p-[0_4px] max-h-[80%] overflow-hidden hover:overflow-auto">
-                {message}
-            </p>
-            <hr />
-            <div>
-                <div>{name}</div>
-                <div>{profession}</div>
-            </div>
-        </div>
+        </>
     );
 };
 

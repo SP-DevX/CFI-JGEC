@@ -14,20 +14,20 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 
     const {
         fullName,
-        photo, 
+        photo,
         _id,
-        description, 
+        description,
     } = data.event;
     return {
         title: fullName,
         description: description
-            ? description.replace("<p>", "").replace("</p>", "")
-            : "Event description", 
+            ? description.replace("<p>", "").replace("</p>", "").slice(0, 140)
+            : "Event description",
         twitter: {
-            title: fullName + "event - CFI",
+            title: fullName + " event - CFI",
             description: description
-                ? description.replace("<p>", "").replace("</p>", "")
-                : "Event description", 
+                ? description.replace("<p>", "").replace("</p>", "").slice(0, 140)
+                : "Event description",
             card: "summary_large_image",
             images: [
                 {
@@ -38,10 +38,10 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
             ],
         },
         openGraph: {
-            title: fullName + "event - CFI",
+            title: fullName + " event - CFI",
             description: description
-                ? description.replace("<p>", "").replace("</p>", "")
-                : "Event description", 
+                ? description.replace("<p>", "").replace("</p>", "").slice(0, 140)
+                : "Event description",
             images: [
                 {
                     url: photo,
@@ -91,6 +91,7 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                         src={photo}
                         width={700}
                         height={500}
+                        priority
                         alt="header image"
                         className="w-full h-auto object-cover rounded-md"
                     />
@@ -141,7 +142,7 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                                     />
                                 </div>
                                 {
-                                    !isCompleted &&
+                                    isCompleted &&
                                     <div className="flex sm:flex-col items-center gap-6">
                                         {/* <Link href={`/winner/icic-2023`}>
                                     <button className="btn w-60 my-2">View Result</button>

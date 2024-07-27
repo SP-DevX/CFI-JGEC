@@ -35,7 +35,7 @@ declare interface alumniCardType {
 declare interface membersType {
     _id: string
     name: string,
-    position: string,
+    position: string[],
     email: string,
     photo: string,
     phone: number
@@ -118,4 +118,17 @@ declare interface reviewType {
     name: string,
     profession: string,
     message: string,
+}
+declare interface testimonialType {
+    _id: string,
+    name: string,
+    profession: string,
+    message: string,
+}
+
+
+declare interface NavListType {
+    name: String,
+    link: string,
+    icon?: React.ReactNode,
 }

@@ -1,5 +1,4 @@
 
-import { NavListType } from "@/type";
 import { BiHome } from "react-icons/bi";
 import {  BsInfoCircle } from "react-icons/bs";
 import { FaTools } from "react-icons/fa";

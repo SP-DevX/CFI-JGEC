@@ -1,7 +1,7 @@
-import { membersType } from "@/type";
+
 
  
-export const AlumniList: membersType[] = [
+export const AlumniList = [
     {
         _id: "123456",
         name: "Somen Pandey",

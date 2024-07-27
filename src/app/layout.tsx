@@ -5,11 +5,12 @@ import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import 'react-quill/dist/quill.snow.css';
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cfi-jgec.vercel.app"),
+  metadataBase: new URL("https://cfi-jgec-new.vercel.app"),
   title: {
     default: "CFI - Center For Innovation, JGEC",
     template: "%s | CFI"
@@ -40,6 +41,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
