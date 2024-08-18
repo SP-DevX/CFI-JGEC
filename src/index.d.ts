@@ -118,6 +118,8 @@ declare interface reviewType {
     name: string,
     profession: string,
     message: string,
+    email: string,
+    isAccepted: boolean
 }
 declare interface testimonialType {
     _id: string,

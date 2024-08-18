@@ -4,6 +4,7 @@ import React from 'react'
 import { Metadata } from 'next'
 import axios from 'axios'
 import Image from 'next/image'
+import NotFound from '@/components/common/NotFound'
 export const metadata: Metadata = {
   title: "Stocks",
   openGraph: {
@@ -24,6 +25,13 @@ export const metadata: Metadata = {
 
 const Stock: React.FC = async () => {
   const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/stock`);
+  if (!data) {
+    return (
+      <NotFound
+        title="No tools found"
+      />
+    )
+  }
   const tools = data.components;
   return (
     <div>
@@ -39,7 +47,6 @@ const Stock: React.FC = async () => {
                   height={100}
                   className="w-full object-cover rounded-sm"
                   alt="tools"
-                  loading='lazy'
                 />
               </div>
               <div className="capitalize text-start pt-3">

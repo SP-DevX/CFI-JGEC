@@ -54,7 +54,7 @@ const Contact: React.FC = () => {
                                 height="240"
                                 style={{ border: 0, width:"100%" }}
                                 allowFullScreen
-                                loading="lazy"
+                                loading="eager"
                                 referrerPolicy="no-referrer-when-downgrade"
                             />
                         </div>

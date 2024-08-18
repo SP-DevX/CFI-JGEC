@@ -1,5 +1,6 @@
 
 import Card from "@/components/Alumni/Card";
+import NotFound from "@/components/common/NotFound";
 import Title from "@/components/common/Title";
 import axios from "axios";
 import { Metadata } from "next";
@@ -25,16 +26,22 @@ export const metadata: Metadata = {
 const Alumni: React.FC = async () => {
   const {
     data: { members },
-  } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/members/alumni`); 
-  
+  } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/members/alumni`);
+
+  if (!members) {
+    return <NotFound title="No alumni details Found" />;
+  } 
+  const years: string[] = members.map((item: alumniCardType) => item.year);
+  const uniqueYears = [...new Set(years)]; 
+
   return (
     <div>
       <Title title="Alumni" />
       <div className="w-full min-h-screen commonBg">
         <div className="layout grid min-[550px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 py-8">
-          {members.map((item: alumniCardType) => (
-            <Card year={item.year} key={item._id} />
-          ))} 
+          {uniqueYears.map((year: string) => (
+            <Card year={year} key={year} />
+          ))}
         </div>
       </div>
     </div>

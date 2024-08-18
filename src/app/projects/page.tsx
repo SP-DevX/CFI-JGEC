@@ -4,6 +4,7 @@ import React from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import axios from 'axios'
+import NotFound from '@/components/common/NotFound'
 export const metadata: Metadata = {
   title: "Projects",
   openGraph: {
@@ -24,6 +25,13 @@ export const metadata: Metadata = {
 
 const Projects: React.FC = async () => {
   const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
+  if (!data) {
+    return (
+      <NotFound
+        title="No projects found"
+      />
+    )
+  }
   return (
     <div>
       <Title title={`Projects`} />

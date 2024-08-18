@@ -1,12 +1,13 @@
 import Title from "@/components/common/Title";
 import ImageCard from "@/components/gallery/ImageCard";
-import React from "react"; 
+import React from "react";
 import axios from "axios";
+import NotFound from "@/components/common/NotFound";
 
 export async function generateMetadata() {
   const {
     data: { photos },
-  } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`); 
+  } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`);
   return {
     title: "Gallery",
     openGraph: {
@@ -14,7 +15,7 @@ export async function generateMetadata() {
       description: "Here are some photos of CFI. Have a look at them and know more about CFI. You can also download them.",
       images: [
         {
-          url: photos? photos[0].photo : "/og.jpg",
+          url: photos ? photos[0].photo : "/og.jpg",
           width: 1200,
           height: 630,
           alt: "Team Members"
@@ -30,7 +31,13 @@ const Gallery: React.FC = async () => {
   const {
     data: { photos },
   } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`);
-
+  if (!photos) {
+    return (
+      <NotFound
+        title="No photos found"
+      />
+    );
+  }
   return (
     <div className="w-full min-h-screen">
       <Title title={`Gallery`} />
@@ -45,7 +52,7 @@ const Gallery: React.FC = async () => {
           <div className="w-full h-full my-4 grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
             {photos.map((photo: galleryPhotoType) => (
               <ImageCard key={photo._id} photo={photo} />
-            ))} 
+            ))}
           </div>
           {/* <div className="flex justify-between items-center">
             <button className="btn w-36 flex items-center justify-center gap-x-2 px-0 ">

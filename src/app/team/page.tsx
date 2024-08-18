@@ -4,6 +4,7 @@ import React from 'react'
 import { Metadata } from 'next'
 import axios from 'axios' 
 import MemberCard from '@/components/common/MemberCard'
+import NotFound from '@/components/common/NotFound'
 export const metadata: Metadata = {
   title: "Team Members",
   openGraph: {
@@ -25,6 +26,14 @@ export const metadata: Metadata = {
 const Team: React.FC = async () => {
   const year = new Date().getFullYear() + 1;
   const { data: { members } } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/members/${year}`); 
+
+  if (!members) {
+    return (
+      <NotFound
+        title="No team members found" 
+      />
+    );
+  }
 
   return (
     <div>

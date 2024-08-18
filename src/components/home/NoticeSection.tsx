@@ -5,10 +5,20 @@ import React from 'react'
 import Logo from "@/assets/logo_light.png"
 import Link from 'next/link';
 import TypeWrite from './TypeWrite';
-import axios from 'axios';
+import axios from 'axios'; 
+import NotFound from '../common/NotFound';
 
-const NoticeSection: React.FC = async () => {
+const NoticeSection = async () => {
     const { data: { allNotices } } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/notice`);
+    if (!allNotices) {
+        return (
+            <NotFound
+                title="No Notice Found"
+                path="/"
+                btnName="Home"
+            />
+        )
+    }
     return (
         <div>
             <section className='layout lg:h-screen  flex max-lg:flex-col  justify-evenly items-center pt-32'>
@@ -20,6 +30,7 @@ const NoticeSection: React.FC = async () => {
                         height={300}
                         width={300}
                         className=' object-contain max-xs:py-4'
+                        priority
                     />
                     <div className='w-full max-w-2xl mx-auto lg:w-4/5 h-full border-primary shadow-shadow_1 bg-primary/70 text-white  rounded-lg absolute top-0 z-40 px-8 py-4 text-lg font-semibold overflow-hidden space-y-2 backdrop-blur-sm  '>
                         <h1 className='text-center mb-2 text-2xl !font-libra'>Notice</h1>

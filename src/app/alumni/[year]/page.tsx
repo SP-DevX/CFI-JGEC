@@ -1,4 +1,5 @@
 import MemberCard from "@/components/common/MemberCard";
+import NotFound from "@/components/common/NotFound";
 import Title from "@/components/common/Title";
 import axios from "axios"; 
 
@@ -28,6 +29,14 @@ const AlumniBatch = async ({ params }: { params: { year: string } }) => {
     const {
         data: { members },
     } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/members/${year}`);
+
+    if (!members) {
+        return <NotFound
+            title="Something went wrong, please try again later."
+            path="/alumni"
+            btnName="Alumni"
+        />;
+    }
    
     return (
         <div>

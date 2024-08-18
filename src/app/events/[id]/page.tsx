@@ -5,6 +5,7 @@ import RegisterTable from "@/components/event/RegisterTable";
 import Link from "next/link";
 import axios from "axios";
 import { MdDownload } from "react-icons/md";
+import NotFound from "@/components/common/NotFound";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
     const { id } = params;
@@ -64,6 +65,10 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
         `${process.env.NEXT_PUBLIC_API_URL}/event/${id}`
     );
 
+    if (!data.event) {
+        return <NotFound title="Something went wrong, Try again later" path="/events" btnName="Events" />;
+    }
+
     const {
         fullName,
         photo,
@@ -92,6 +97,7 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                         width={700}
                         height={500}
                         priority
+                        loading="eager"
                         alt="header image"
                         className="w-full h-auto object-cover rounded-md"
                     />

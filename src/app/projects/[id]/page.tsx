@@ -1,3 +1,4 @@
+import NotFound from "@/components/common/NotFound";
 import Title from "@/components/common/Title";
 import RedirectBtn from "@/components/projects/RedirectBtn";
 import axios from "axios";
@@ -39,6 +40,9 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
     const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/projects/details/${id}`
     );
+    if (!data) {
+        return <NotFound title="Something went wrong, Please try again later!" />;
+    }
     const {
         _id,
         projectName,
