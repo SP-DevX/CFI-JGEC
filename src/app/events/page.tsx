@@ -78,6 +78,7 @@ const Events: React.FC = async () => {
                           width={500}
                           height={500}
                           priority
+                          loading="eager"
                           className="rounded-lg w-full h-auto object-cover"
                         />
                       </div>

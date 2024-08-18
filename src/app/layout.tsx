@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CFI - Center For Innovation, JGEC",
     description: "The hub of Ideas ,Innovation and Inspiration.CFI is the technical society of JGEC, serving as a platform for students to apply engineering knowledge to solve real-world problems. It has been promoting technical knowledge of the students since its establishment (2010). Along with conduction of classes, CFI also deals with projects and provides adequate support to carry out the same. In short, CFI is an organization where students come-in together to uplift their technical know-how - for the betterment of themselves and for the society. CFI is not only one of the most active clubs in JGEC but also receives immense support and guidance from the teachers.",
-    url: 'https://cfi-jgec.vercel.app',
+    url: 'https://cfi-jgec-new.vercel.app',
     type: "website"
   },
 };
