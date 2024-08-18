@@ -39,7 +39,7 @@ const RegisterTable: React.FC<props> = ({ isCompleted, eventId, eventName }) => 
     const registerTeam = async () => {
         setLoading(true);
         try {
-            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/register/teams`);
+            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event/register/teams/${eventId}`);
             setTeams(data); 
         } catch (error: any) {
             console.log(error);
@@ -61,7 +61,7 @@ const RegisterTable: React.FC<props> = ({ isCompleted, eventId, eventName }) => 
                 open={openModal}
                 fields={fields}
             />
-            <div className=" flex items-center my-4 gap-4">
+            <div className=" flex items-center my-4 gap-4 ">
                 {!isCompleted &&
                     <button
                         onClick={() => setOpenModal(true)}
@@ -72,15 +72,15 @@ const RegisterTable: React.FC<props> = ({ isCompleted, eventId, eventName }) => 
 
             {teams.length > 0 &&
                 <div className='w-full min-h-40 my-8'>
-                    <h1 className='text-2xl font-medium border-b-2 relative after:absolute after:contents-[""] after:-bottom-[2px] after:left-0 after:w-[166px] after:h-[2px] after:bg-blue-500'>Register Teams</h1>
+                    <h1 className='text-2xl font-medium border-b-2 relative after:absolute after:contents-[""] after:-bottom-[2px] after:left-0 after:w-[166px] after:h-[2px] after:bg-blue-500 text-primary'>Register Teams</h1>
 
                     <div className="overflow-x-auto my-4">
                         <Table>
                             <Table.Head >
                                 <Table.HeadCell className='max-xs:p-2 max-xs:text-xs'>SRL. No.</Table.HeadCell>
-                                <Table.HeadCell className='max-xs:p-2 max-xs:text-xs'>Team name</Table.HeadCell>
+                                <Table.HeadCell className='max-xs:p-2 max-xs:text-xs  text-nowrap'>Team name</Table.HeadCell>
                                 <Table.HeadCell className='max-xs:p-2 max-xs:text-xs text-nowrap'>Project name</Table.HeadCell>
-                                <Table.HeadCell className='max-xs:p-2 max-xs:text-xs'>Leader Name</Table.HeadCell>
+                                <Table.HeadCell className='max-xs:p-2 max-xs:text-xs  text-nowrap'>Leader Name</Table.HeadCell>
                                 <Table.HeadCell className='max-xs:p-2 max-xs:text-xs'>Contact No</Table.HeadCell>
                                 <Table.HeadCell className='max-xs:p-2 max-xs:text-xs'>No of Members</Table.HeadCell>
                             </Table.Head>
@@ -89,7 +89,7 @@ const RegisterTable: React.FC<props> = ({ isCompleted, eventId, eventName }) => 
                                     teams.map((team, index) => (
                                         <Table.Row key={team._id} className="capitalize">
                                             <Table.Cell className='max-xs:p-2 max-xs:text-xs'>{index + 1}.</Table.Cell>
-                                            <Table.Cell className="font-semibold text-gray-700 max-xs:p-2 max-xs:text-xs text-wrap ">
+                                            <Table.Cell className="font-semibold text-gray-700 max-xs:p-2 max-xs:text-xs text-nowrap ">
                                                 <div className='flex items-center gap-x-2  break-words '>
                                                     <Image
                                                         src={team.teamLogo}
@@ -103,7 +103,7 @@ const RegisterTable: React.FC<props> = ({ isCompleted, eventId, eventName }) => 
                                                 </div>
                                             </Table.Cell>
                                             <Table.Cell className='max-xs:p-2 max-xs:text-xs'>{team.projectName}</Table.Cell>
-                                            <Table.Cell className='text-nowrap max-xs:text-xs max-xs:p-2'>{team.leaderName}</Table.Cell>
+                                            <Table.Cell className='text-nowrap max-xs:text-xs max-xs:p-2 '>{team.leaderName}</Table.Cell>
                                             <Table.Cell className='max-xs:p-2 max-xs:text-xs'>{team.phone}</Table.Cell>
                                             <Table.Cell className='max-xs:p-2 max-xs:text-xs'>{team.members.length+1}</Table.Cell>
                                         </Table.Row>

@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <NoticeSection />
       <Carousel />
       <CollaborateClub />
-      <Testimonials/>/
+      <Testimonials/> 
     </div>
   )
 }

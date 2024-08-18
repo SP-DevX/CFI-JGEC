@@ -4,12 +4,17 @@ import Image from 'next/image'
 import React from 'react'
 import Logo from "@/assets/logo_light.png"
 import Link from 'next/link';
-import TypeWrite from './TypeWrite';
-import axios from 'axios'; 
+import TypeWrite from './TypeWrite'; 
 import NotFound from '../common/NotFound';
 
 const NoticeSection = async () => {
-    const { data: { allNotices } } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/notice`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/notice`, {
+        next: {
+            revalidate: 3600,
+        },
+    });
+    const { allNotices } = await res.json();
+
     if (!allNotices) {
         return (
             <NotFound

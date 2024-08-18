@@ -1,7 +1,6 @@
 import MemberCard from "@/components/common/MemberCard";
 import NotFound from "@/components/common/NotFound";
-import Title from "@/components/common/Title";
-import axios from "axios"; 
+import Title from "@/components/common/Title"; 
 
 export async function generateMetadata({ params }: { params: { year: string } }) {
     const { year } = params;
@@ -26,9 +25,16 @@ export async function generateMetadata({ params }: { params: { year: string } })
 
 const AlumniBatch = async ({ params }: { params: { year: string } }) => {
     const { year } = params; 
-    const {
-        data: { members },
-    } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/members/${year}`);
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/members/${year}`,
+        {
+            next: {
+                revalidate: 3600
+            }
+        }
+    );
+
+    const { members } = await res.json();
 
     if (!members) {
         return <NotFound
@@ -37,7 +43,7 @@ const AlumniBatch = async ({ params }: { params: { year: string } }) => {
             btnName="Alumni"
         />;
     }
-   
+
     return (
         <div>
             <Title title={`${year} Batch`} />
@@ -45,7 +51,7 @@ const AlumniBatch = async ({ params }: { params: { year: string } }) => {
                 <div className="layout grid min-[425px]:grid-cols-2 md:grid-cols-3 mlg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 p-8">
                     {members.map((item: membersType) => (
                         <MemberCard data={item} key={item._id} />
-                    ))} 
+                    ))}
                 </div>
             </div>
         </div>

@@ -1,8 +1,7 @@
 
 import Title from '@/components/common/Title' 
 import React from 'react'
-import { Metadata } from 'next'
-import axios from 'axios' 
+import { Metadata } from 'next' 
 import MemberCard from '@/components/common/MemberCard'
 import NotFound from '@/components/common/NotFound'
 export const metadata: Metadata = {
@@ -24,8 +23,15 @@ export const metadata: Metadata = {
 }
 
 const Team: React.FC = async () => {
-  const year = new Date().getFullYear() + 1;
-  const { data: { members } } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/members/${year}`); 
+  const year = new Date().getFullYear() + 1; 
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/members/${year}`, {
+    next: {
+      revalidate: 3600
+    }
+  });
+  
+  const { members } = await res.json();
 
   if (!members) {
     return (

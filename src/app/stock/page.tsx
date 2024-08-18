@@ -1,8 +1,7 @@
 
 import Title from '@/components/common/Title'
 import React from 'react'
-import { Metadata } from 'next'
-import axios from 'axios'
+import { Metadata } from 'next' 
 import Image from 'next/image'
 import NotFound from '@/components/common/NotFound'
 export const metadata: Metadata = {
@@ -23,8 +22,15 @@ export const metadata: Metadata = {
   }
 }
 
-const Stock: React.FC = async () => {
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/stock`);
+const Stock: React.FC = async () => { 
+
+  const res= await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stock`, {
+    next: {
+      revalidate: 3600,
+    },
+  });
+  const data = await res.json();
+
   if (!data) {
     return (
       <NotFound
@@ -49,12 +55,12 @@ const Stock: React.FC = async () => {
                   alt="tools"
                 />
               </div>
-              <div className="capitalize text-start pt-3">
-                <h1 className="text-base font-semibold line-clamp-2">{tool.name}</h1>
+              <div className="capitalize text-start pt-3 text-secondary">
+                <h1 className="text-base font-medium text-primary line-clamp-2">{tool.name}</h1>
                 {tool.modelNo && (
-                  <h1 className="text-sm font-medium">Model: {tool.modelNo}</h1>
+                  <h1 className="text-xs x:text-sm">Model: {tool.modelNo}</h1>
                 )}
-                <p className="text-sm font-medium">
+                <p className="text-xs x:text-sm">
                   Qty - <span>{tool.qty}</span>
                 </p>
               </div>

@@ -34,7 +34,7 @@ export default function NavDrawer({ open, closed }: props) {
                     <ul>
                         {
                             NavItems.map((item, i) => (
-                                <li key={i} className={`py-2 px-2 text-lg font-semibold  rounded-md ${path === item.link ? "bg-primary text-white" : "text-gray-600"}`}>
+                                <li key={i} className={`py-2 px-2 text-lg font-semibold  rounded-md ${path === item.link ? "bg-primary text-white" : "text-gray-600"} mb-2`}>
                                     <Link
                                         className="w-full flex items-center gap-x-2"
                                         onClick={closed}
@@ -48,14 +48,14 @@ export default function NavDrawer({ open, closed }: props) {
                         }
                     </ul>
                     <div className="flex flex-col mt-10 sm:hidden">
-                        <h1 className="text-center text-lg">
-                            Follow us on
+                        <h1 className="text-center font-medium text-primary">
+                            Follow Us on
                         </h1>
                         <div className="flex justify-center items-center space-x-4 mt-3">
                             {socialIcons.map((icon, index) => {
                                 return (
                                     <Link href={icon.link}
-                                        className="text-primary opacity-70 hover:opacity-100  text-2xl"
+                                        className="text-primary opacity-80 hover:opacity-100  text-2xl"
                                         key={index}
                                     >
                                         {icon.Icon}

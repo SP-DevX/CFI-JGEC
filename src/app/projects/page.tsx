@@ -2,8 +2,7 @@ import Title from '@/components/common/Title'
 import ProjectCard from '@/components/projects/ProjectCard'
 import React from 'react'
 import { Metadata } from 'next'
-import Link from 'next/link'
-import axios from 'axios'
+import Link from 'next/link' 
 import NotFound from '@/components/common/NotFound'
 export const metadata: Metadata = {
   title: "Projects",
@@ -23,8 +22,15 @@ export const metadata: Metadata = {
   }
 }
 
-const Projects: React.FC = async () => {
-  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
+const Projects: React.FC = async () => { 
+  
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+    next: {
+      revalidate: 3600,
+    },
+  });
+  const data = await res.json();
+
   if (!data) {
     return (
       <NotFound

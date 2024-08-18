@@ -9,16 +9,19 @@ import NotFound from "@/components/common/NotFound";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
     const { id } = params;
-    const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/event/${id}`
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/event/${id}`, {
+        next: {
+            revalidate: 3600,
+        },
+    });
+    const { event } = await res.json();
 
     const {
         fullName,
         photo,
         _id,
         description,
-    } = data.event;
+    } = event;
     return {
         title: fullName,
         description: description
@@ -101,47 +104,47 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                         alt="header image"
                         className="w-full h-auto object-cover rounded-md"
                     />
-                    <h1 className="text-2xl xs:text-3xl font-semibold my-6 text-center">
+                    <h1 className="text-2xl xs:text-3xl font-semibold my-6 text-center text-primary">
                         {fullName}
                     </h1>
                     <div className="w-full min-h-40 grid grid-cols-12">
                         <div className=" col-span-12 sm:col-span-6 mlg:col-span-4 sm:pe-4">
-                            <h1 className='text-2xl xs:text-2xl font-medium border-b-2 relative after:absolute after:contents-[""] after:-bottom-[2px] after:left-0 after:w-36 after:h-[2px] after:bg-blue-500'>
+                            <h1 className='text-2xl xs:text-2xl font-medium border-b-2 relative after:absolute after:contents-[""] after:-bottom-[2px] after:left-0 after:w-36 after:h-[2px] after:bg-blue-500 text-primary'>
                                 Import Details
                             </h1>
-                            <div className="p-5 ps-0">
+                            <div className="p-5 ps-0 text-primary">
                                 <h1 className=" max-xxs:text-sm xs:text-lg font-semibold mb-3">
                                     Registration:
-                                    <span className="ms-2 font-medium text-[15px] opacity-80">
+                                    <span className="ms-2 font-medium text-[15px] opacity-85">
                                         {reg_date_start} to {reg_date_end}
                                     </span>
                                 </h1>
                                 <h1 className=" max-xxs:text-sm xs:text-lg font-semibold  mb-3">
                                     Organizers:
-                                    <span className="ms-2 font-medium text-base opacity-80">
+                                    <span className="ms-2 font-medium text-base opacity-85">
                                         {organizer}
                                     </span>
                                 </h1>
                                 <h1 className=" max-xxs:text-sm xs:text-lg font-semibold  mb-3">
                                     Venu:
-                                    <span className="ms-2 font-medium text-base opacity-80">
+                                    <span className="ms-2 font-medium text-base opacity-85">
                                         {venue}
                                     </span>
                                 </h1>
                                 <h1 className=" max-xxs:text-sm xs:text-lg font-semibold  mb-3">
                                     Date:
-                                    <span className="ms-2 font-medium text-base opacity-80">
+                                    <span className="ms-2 font-medium text-base opacity-85">
                                         {date}
                                     </span>
                                 </h1>
                                 <h1 className=" max-xxs:text-sm xs:text-lg font-semibold  mb-3">
                                     Time:
-                                    <span className="ms-2 font-medium text-base opacity-80">
+                                    <span className="ms-2 font-medium text-base opacity-85">
                                         {event_start_time}pm. - {event_end_time}pm.
                                     </span>
                                 </h1>
-                                <div className="max-xxs:text-sm xs:text-lg font-semibold mb-3">
-                                    Prize: <span className="ms-2 font-medium text-base opacity-80" >Here is the prize pool of the event</span>
+                                <div className="max-xxs:text-sm xs:text-lg font-semibold mb-3 text-primary">
+                                    Prize: <span className="ms-2 font-medium text-base opacity-85" >Here is the prize pool of the event</span>
                                     <span
                                         className=" font-medium text-base customeHtml  "
                                         dangerouslySetInnerHTML={{ __html: prizes }}
@@ -171,12 +174,12 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                             </div>
                         </div>
                         <div className="sm:ps-4 col-span-12  sm:col-span-6 mlg:col-span-8">
-                            <h1 className='text-xl xs:text-2xl font-medium border-b-2 relative after:absolute after:contents-[""] after:-bottom-[2px] after:left-0 after:w-[120px] after:h-[2px] after:bg-blue-500'>
+                            <h1 className='text-xl xs:text-2xl font-medium border-b-2 relative after:absolute after:contents-[""] after:-bottom-[2px] after:left-0 after:w-[120px] after:h-[2px] after:bg-blue-500 text-primary'>
                                 Description
                             </h1>
-                            <div className="p-5 px-0  ">
+                            <div className="p-5 px-0   ">
                                 <p
-                                    className="mb-3 customeHtml"
+                                    className="mb-3 customeHtml !text-secondary"
                                     dangerouslySetInnerHTML={{ __html: description }}
                                 />
                             </div>
@@ -185,7 +188,7 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                             </h1>
                             <div className="p-5 px-0">
                                 <div
-                                    className="mb-3 customeHtml"
+                                    className="mb-3 customeHtml  !text-secondary"
                                     dangerouslySetInnerHTML={{ __html: rules }}
                                 />
                             </div>

@@ -1,7 +1,6 @@
 import NotFound from "@/components/common/NotFound";
 import Title from "@/components/common/Title";
-import EventsCard from "@/components/event/EventsCard";
-import axios from "axios";
+import EventsCard from "@/components/event/EventsCard"; 
 import { Badge } from "flowbite-react";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -27,17 +26,16 @@ export const metadata: Metadata = {
   },
 };
 
-const Events: React.FC = async () => {
-  const {
-    data: { events },
-  } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/event`);
+const Events: React.FC = async () => { 
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/event`, { next: { revalidate: 3600 } });
+  const { events } = await res.json();  
 
   if (!events) {
     return <NotFound title="No Event Found" />;
   }
 
   const checkEvent = (status: boolean) => {
-    const ele = events.filter((e: eventCardType) => e.isCompleted === status); 
+    const ele = events.filter((e: eventCardType) => e.isCompleted === status);
     if (ele.length === 0) return false;
     return true;
   };
@@ -49,8 +47,8 @@ const Events: React.FC = async () => {
         <div className="layout">
           {checkEvent(false) && (
             <div className="w-full min-h-[25rem] my-8 bg-primary/20 backdrop-blur-sm rounded-lg p-4 xs:p-6">
-              <h1 className="text-4xl sm:text-5xl font-bold text-white first-letter:text-5xl sm:first-letter:text-6xl first-letter:text-warning relative after:contents-[''] after:absolute after:w-64  xs:after:w-80 after:h-1.5 after:bg-warning after:rounded-full after:left-0 after:-bottom-4 capitalize mb-12">
-                Upcomming
+              <h1 className=" text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white first-letter:text-3xl xxs:first-letter:text-4xl xs:first-letter:text-5xl sm:first-letter:text-6xl first-letter:text-warning relative after:contents-[''] after:absolute after:w-40  xs:after:w-80 after:h-1.5 after:bg-warning after:rounded-full after:left-0 after:-bottom-4 capitalize mb-12">
+                Upcoming
               </h1>
               {events
                 .filter((e: eventCardType) => e.isCompleted === false)
@@ -68,7 +66,7 @@ const Events: React.FC = async () => {
                   } = event;
                   return (
                     <div
-                      className="flex flex-col lg:flex-row justify-between mb-6 sm:mb-12"
+                      className="flex flex-col lg:flex-row justify-between mb-12"
                       key={_id}
                     >
                       <div className="lg:w-[45%] max-lg:mb-6">
@@ -83,21 +81,21 @@ const Events: React.FC = async () => {
                         />
                       </div>
                       <div className="lg:w-1/2">
-                        <h1 className="text-2xl xxs:text-3xl text-white font-semibold uppercase mb-1">
+                        <h1 className="xxs:text-lg xs:text-xl sm:text-2xl md:text-3xl text-white font-semibold uppercase mb-1">
                           {shortName}
                         </h1>
-                        <p className="text-lg text-white opacity-75 mb-4">
+                        <p className=" xs:text-lg text-white opacity-75 mb-4">
                           {fullName}
                         </p>
                         <div
-                          className=" customeHtml text-white opacity-85 mb-4 line-clamp-4"
+                          className="max-xs:!text-sm customeHtml text-white opacity-85 mb-4 line-clamp-4"
                           dangerouslySetInnerHTML={{ __html: description }}
                         />
-                        <p className="text-lg text-white mb-2">
+                        <p className="text-sm xs:text-lg text-white mb-2">
                           Event Date & Time: {date}, {event_start_time} -{" "}
                           {event_end_time}
                         </p>
-                        <p className="font-medium text-white mb-4">
+                        <p className="max-xs:!text-sm font-medium text-white mb-4">
                           Registration:{" "}
                           {isCompleted ? (
                             <Badge

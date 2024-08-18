@@ -5,7 +5,7 @@ import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import 'react-quill/dist/quill.snow.css';
 import { Toaster } from "react-hot-toast";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react" 
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,13 +1,15 @@
 import Title from "@/components/common/Title";
 import ImageCard from "@/components/gallery/ImageCard";
-import React from "react";
-import axios from "axios";
+import React from "react"; 
 import NotFound from "@/components/common/NotFound";
 
 export async function generateMetadata() {
-  const {
-    data: { photos },
-  } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/gallery`, {
+    next: {
+      revalidate: 3600,
+    },
+  });
+  const { photos } = await res.json();
   return {
     title: "Gallery",
     openGraph: {
@@ -28,9 +30,14 @@ export async function generateMetadata() {
 }
 
 const Gallery: React.FC = async () => {
-  const {
-    data: { photos },
-  } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/gallery`);
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/gallery`, {
+    next: {
+      revalidate: 3600,
+    },
+  });
+  const { photos } = await res.json();
+
   if (!photos) {
     return (
       <NotFound

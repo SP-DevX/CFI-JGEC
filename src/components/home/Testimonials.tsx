@@ -1,10 +1,16 @@
-
-import axios from 'axios';
+ 
 import ReviewBox from './ReviewBox';
 import NotFound from '../common/NotFound';
 
-const Testimonials = async () => {
-    const { data: { reviews } } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/review`);
+const Testimonials = async () => { 
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/review`, {
+        next: {
+            revalidate: 3600,
+        },
+    });
+    const { reviews } = await res.json();
+
     if (!reviews) {
         return (
             <NotFound title='No testimonials found' />
@@ -18,7 +24,7 @@ const Testimonials = async () => {
                     <h1 className='text-3xl xxs:text-4xl xs:text-5xl font-semibold text-white mb-3 sm:mb-6 max-mlg:text-center'>
                         Testimonials
                     </h1>
-                    <h6 className='xxs:text-xl font-medium text-white opacity-85  max-mlg:text-center'>
+                    <h6 className='xs:text-xl font-medium text-white opacity-85  max-mlg:text-center'>
                         The Voice of Trust and Satisfaction
                     </h6>
                 </div>

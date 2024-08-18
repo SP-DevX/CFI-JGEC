@@ -3,9 +3,19 @@
 import axios from "axios";
 import Image from "next/image";
 import React from "react";
+import NotFound from "../common/NotFound";
 
-const ToolCard: React.FC = async () => {
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/stock`);
+const ToolCard: React.FC = async () => { 
+    const res= await fetch(`${process.env.NEXT_PUBLIC_API_URL}/stock`, {
+        next: {
+            revalidate: 3600,
+        },
+    });
+    const { data } = await res.json();
+
+    if (!data) {
+        return <NotFound title="No tools found" />;
+    }
     const tools = data.components;
     
     return (

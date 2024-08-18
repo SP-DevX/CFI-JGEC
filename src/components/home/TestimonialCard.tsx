@@ -6,7 +6,7 @@ const TestimonialCard = ({ data, dataIndex }: { data: testimonialType[], dataInd
     return (
         <div className="w-[280px] mx-auto h-[350px] bg-white rounded-[10px] p-3 xs:p-[20px] flex flex-col shadow-sm  items-start gap-[10px]">
             <Image src={'/openquote.svg'} width={50} height={50} alt="Quote" className='w-8' />
-            <p className='text-xs xxs:text-sm p-[0_4px]  h-[80%] overflow-hidden hover:overflow-auto' >
+            <p className='text-xs xxs:text-sm p-[0_4px]  h-[80%] text-secondary overflow-hidden hover:overflow-auto' >
                 {message}
             </p>
             <hr />

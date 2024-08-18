@@ -15,8 +15,8 @@ const ProjectCard: React.FC<projectType> = ({ _id, files, projectName, studentNa
                     loading='lazy'
                 />
             }
-            <div className='p-4 '>
-                <h1 className='text-center text-xl font-semibold capitalize mb-3'>{projectName}</h1>
+            <div className='p-4 text-secondary '>
+                <h1 className='text-center text-xl font-semibold capitalize mb-3 text-primary'>{projectName}</h1>
                 <h1 className='opacity-80  text-sm mb-1'>Made / Presented by</h1>
                 <p className='font-medium leading-4'>
                     {studentName}, {year} year, {branch} dept.

@@ -21,18 +21,6 @@ export const footerTopItem: footerType[] = [
         link: "/alumni",
     },
     {
-        title: "projects",
-        link: "/projects",
-    },
-    {
-        title: "certificates",
-        link: "/certificate",
-    },
-    {
-        title: "events",
-        link: "/events",
-    },
-    {
         title: "stock",
         link: "/stock",
     },
@@ -43,6 +31,18 @@ export const footerTopItem: footerType[] = [
     {
         title: "gallery",
         link: "/gallery",
+    },
+    {
+        title: "projects",
+        link: "/projects",
+    },
+    {
+        title: "certificates",
+        link: "/certificate",
+    },
+    {
+        title: "events",
+        link: "/events",
     },
 ];
 

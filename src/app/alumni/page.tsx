@@ -1,8 +1,7 @@
 
 import Card from "@/components/Alumni/Card";
 import NotFound from "@/components/common/NotFound";
-import Title from "@/components/common/Title";
-import axios from "axios";
+import Title from "@/components/common/Title"; 
 import { Metadata } from "next";
 import React from "react";
 export const metadata: Metadata = {
@@ -23,10 +22,14 @@ export const metadata: Metadata = {
   },
 };
 
-const Alumni: React.FC = async () => {
-  const {
-    data: { members },
-  } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/members/alumni`);
+const Alumni: React.FC = async () => { 
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/members/alumni`, {
+    next: {
+      revalidate: 3600
+    }
+  });
+  const { members } = await res.json();
 
   if (!members) {
     return <NotFound title="No alumni details Found" />;
