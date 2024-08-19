@@ -89,7 +89,7 @@ const RegisterTable: React.FC<props> = ({ isCompleted, eventId, eventName }) => 
                                     teams.map((team, index) => (
                                         <Table.Row key={team._id} className="capitalize">
                                             <Table.Cell className='max-xs:p-2 max-xs:text-xs'>{index + 1}.</Table.Cell>
-                                            <Table.Cell className="font-semibold text-gray-700 max-xs:p-2 max-xs:text-xs text-nowrap ">
+                                            <Table.Cell className="font-semibold text-gray-700 max-xs:p-2 max-xs:text-xs  ">
                                                 <div className='flex items-center gap-x-2  break-words '>
                                                     <Image
                                                         src={team.teamLogo}
@@ -97,7 +97,7 @@ const RegisterTable: React.FC<props> = ({ isCompleted, eventId, eventName }) => 
                                                         width={32}
                                                         height={32}
                                                         loading='lazy' 
-                                                        className="rounded-full w-6 h-6 xs:w-8 xs:h-8 object-cover"
+                                                        className="rounded-full min-w-6 w-6 h-6 xs:min-w-8 xs:w-8 xs:h-8 object-cover"
                                                     />
                                                 {team.teamName}
                                                 </div>

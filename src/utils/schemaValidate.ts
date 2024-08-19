@@ -43,7 +43,7 @@ export const projectValidation = yup.object().shape({
     projectName: yup.string().required("Project name is required"),
     projectDescription: yup.string().required("Project description is required"),
     files: yup.mixed().required("Project files are required"),
-    liveLink: yup.string().required("Live link is required"),
+    // liveLink: yup.string().required("Live link is required"),
     studentName: yup.string().required("Student name is required"),
     email: yup.string().email("Invalid email").required("Email is required"),
     mobile: yup

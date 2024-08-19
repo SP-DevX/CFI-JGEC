@@ -1,6 +1,6 @@
 import NotFound from "@/components/common/NotFound";
 import Title from "@/components/common/Title";
-import RedirectBtn from "@/components/projects/RedirectBtn"; 
+import RedirectBtn from "@/components/projects/RedirectBtn";
 import Image from "next/image";
 import React from "react";
 
@@ -104,15 +104,19 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
                                 </div>
                             ))}
                         </div>
-                        <h1 className="text-xl xs:text-2xl md:text-3xl font-semibold border-b pb-1.5 xs:pb-3 mb-4 mt-8 text-primary">
-                            Project Demo
-                        </h1>
-                        <RedirectBtn link={liveLink} text="Click here to view demo" />
-                        {liveLink && <iframe
-                            width="420"
-                            src={liveLink}
-                            className="w-full h-60 sm:h-[20rem] md:h-[25rem] lg:h-[30rem] object-cover rounded-lg mt-6"
-                        ></iframe>}
+                        {liveLink &&
+                            <div>
+                                <h1 className="text-xl xs:text-2xl md:text-3xl font-semibold border-b pb-1.5 xs:pb-3 mb-4 mt-8 text-primary">
+                                    Project Demo
+                                </h1>
+                                <RedirectBtn link={liveLink} text="Click here to view demo" />
+                                {liveLink && <iframe
+                                    width="420"
+                                    src={liveLink}
+                                    className="w-full h-60 sm:h-[20rem] md:h-[25rem] lg:h-[30rem] object-cover rounded-lg mt-6"
+                                ></iframe>}
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

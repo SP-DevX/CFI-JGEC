@@ -50,12 +50,10 @@ const AddProject = () => {
     deleteStorage(id);
   }
 
-  const submitProject = async (values: projectType, { resetForm }: any) => {
-    console.log(values);
+  const submitProject = async (values: projectType, { resetForm }: any) => { 
     try {
       setLoading(true);
-      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/projects/add`, values);
-      console.log(data);
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/projects/add`, values); 
       toast.success(data.message);
       resetForm();
       setPhotos([]);
