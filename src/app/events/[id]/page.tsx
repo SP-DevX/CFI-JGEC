@@ -180,7 +180,7 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                     </div>
 
                     <RegisterTable
-                        isCompleted={!isCompleted}
+                        isCompleted={isCompleted}
                         eventId={_id}
                         eventName={shortName}
                     />
