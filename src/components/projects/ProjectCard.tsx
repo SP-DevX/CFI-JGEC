@@ -10,21 +10,24 @@ const ProjectCard: React.FC<projectType> = ({ _id, files, projectName, studentNa
                     src={files[0]}
                     width={250}
                     height={150}
-                    className='w-full h-[10rem] object-cover'
+                    className='w-full h-[12rem] object-cover'
                     alt='project'
-                    loading='lazy'
+                    priority
+                    loading='eager'
                 />
             }
-            <div className='p-4 text-secondary '>
-                <h1 className='text-center text-xl font-semibold capitalize mb-3 text-primary'>{projectName}</h1>
-                <h1 className='opacity-80  text-sm mb-1'>Made / Presented by</h1>
-                <p className='font-medium leading-4'>
+            <div className='p-4 text-secondary h-[7.5rem] '>
+                <h1 className='text-center text-base font-semibold capitalize mb-2 text-primary line-clamp-2'>{projectName}</h1>
+                <h1 className='opacity-85  text-xs mb-1'>Made/Presented by:</h1>
+                <p className='font-medium leading-4 text-sm'>
                     {studentName}, {year} year, {branch} dept.
                 </p>
             </div>
-            <Link href={`/projects/${_id}`}  >
-                <button className='w-full py-3.5 bg-primary text-white'>View More</button>
-            </Link>
+            <div className='mt-auto'>
+                <Link href={`/projects/${_id}`}  >
+                    <button className='w-full py-3.5 bg-primary text-white'>View More</button>
+                </Link>
+            </div>
         </div>
     )
 }

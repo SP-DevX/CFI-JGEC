@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
         },
     });
 
-    const { data } = await res.json();
+    const data  = await res.json();
     const {
         _id,
         projectName,
@@ -46,13 +46,12 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
         },
     });
 
-    const data = await res.json();
+    const data = await res.json(); 
 
     if (!data) {
         return <NotFound title="Something went wrong, Please try again later!" />;
     }
-    const {
-        _id,
+    const { 
         projectName,
         studentName,
         year,

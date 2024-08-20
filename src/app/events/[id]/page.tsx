@@ -6,6 +6,7 @@ import Link from "next/link";
 import axios from "axios";
 import { MdDownload } from "react-icons/md";
 import NotFound from "@/components/common/NotFound";
+import PostEvent from "@/components/event/PostEvent";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
     const { id } = params;
@@ -152,24 +153,7 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                                 </div>
                                 {
                                     isCompleted &&
-                                    <div className="flex sm:flex-col items-center gap-6">
-                                        {/* <Link href={`/winner/icic-2023`}>
-                                    <button className="btn w-60 my-2">View Result</button>
-                                    </Link> */}
-                                        <div className=" sm:mb-3">
-                                            <Link href={`/certificate/${_id}`} >
-                                                <button className="btn w-48  xxs:w-60">
-                                                    <MdDownload />
-                                                    Certificates
-                                                </button>
-                                            </Link>
-                                        </div>
-                                        <div className=" sm:mb-3">
-                                            <Link href={`/gallery`}>
-                                                <button className="btn w-48 xxs:w-60">Event Gallery</button>
-                                            </Link>
-                                        </div>
-                                    </div>
+                                    <PostEvent />
                                 }
                             </div>
                         </div>
@@ -196,7 +180,7 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                     </div>
 
                     <RegisterTable
-                        isCompleted={isCompleted}
+                        isCompleted={!isCompleted}
                         eventId={_id}
                         eventName={shortName}
                     />

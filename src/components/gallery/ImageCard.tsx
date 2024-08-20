@@ -30,7 +30,7 @@ const ImageCard: React.FC<{ photo: galleryPhotoType }> = ({ photo }) => {
             <div className="w-full text-gray-600 flex items-center">
                 <h1 className="w-3/4 px-2 py-1 text-xs xs:text-sm text-gray-800 font-medium line-clamp-1">{photo.title}</h1>
                 <div className="w-1/4 flex items-center justify-evenly">
-                    {downloadCom ? (
+                    {/* {downloadCom ? (
                         <MdOutlineFileDownloadDone
                             size={20}
                             cursor={"pointer"}
@@ -42,7 +42,7 @@ const ImageCard: React.FC<{ photo: galleryPhotoType }> = ({ photo }) => {
                             cursor={"pointer"}
                             onClick={() => SetDownloadComp(true)}
                         />
-                    )}
+                    )} */}
                     <MdZoomOutMap
                         size={18}
                         cursor={"pointer"}

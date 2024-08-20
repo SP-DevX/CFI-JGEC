@@ -41,7 +41,7 @@ const Projects: React.FC = async () => {
   return (
     <div>
       <Title title={`Projects`} />
-      <div className='w-full min-h-screen commonBg'>
+      <div className='w-full min-h-screen'>
         <div className='layout py-6'>
           <div className='flex justify-end'>
             <Link href='/projects/add-project' className='  text-white '>

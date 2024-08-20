@@ -14,7 +14,6 @@ const NoticeSection = async () => {
         },
     });
     const { allNotices } = await res.json();
-
     if (!allNotices) {
         return (
             <NotFound
@@ -24,6 +23,7 @@ const NoticeSection = async () => {
             />
         )
     }
+    const notices = allNotices.reverse();
     return (
         <div>
             <section className='layout lg:h-screen  flex max-lg:flex-col  justify-evenly items-center pt-32'>
@@ -41,7 +41,7 @@ const NoticeSection = async () => {
                         <h1 className='text-center mb-2 text-2xl !font-libra'>Notice</h1>
                         <div className='w-full h-[18rem] overflow-hidden font-normal'>
                             <ul className='bottom-top space-y-2 text-sm'>
-                                {allNotices.map((item: noticeType, index: number) => (
+                                {notices.map((item: noticeType, index: number) => (
                                     <li key={index} className=''>
                                         <Link target='__blank' href={item.link}>
                                             {index + 1}.{" "} {item.title}
