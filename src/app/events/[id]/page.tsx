@@ -167,7 +167,7 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                                     dangerouslySetInnerHTML={{ __html: description }}
                                 />
                             </div>
-                            <h1 className='text-xl xs:text-2xl font-medium border-b-2 relative after:absolute after:contents-[""] after:-bottom-[2px] after:left-0 after:w-[62px] after:h-[2px] after:bg-blue-500'>
+                            <h1 className='text-xl xs:text-2xl font-medium border-b-2 relative after:absolute after:contents-[""] after:-bottom-[2px] after:left-0 after:w-[62px] after:h-[2px] after:bg-blue-500 text-primary'>
                                 Rules
                             </h1>
                             <div className="p-5 px-0">

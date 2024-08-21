@@ -7,7 +7,7 @@ import { MdDownload } from 'react-icons/md'
 function PostEvent() {
     return (
         <>
-            <div className="flex sm:flex-col mt-6 gap-y-2">
+            <div className="flex flex-col mt-6 gap-y-2">
                 <div className=" sm:mb-3">
                     {/* <Link href={`/winner/icic-2023`}> */}
                     <button
