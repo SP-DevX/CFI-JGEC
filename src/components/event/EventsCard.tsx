@@ -14,7 +14,7 @@ const EventsCard: React.FC<eventCardType> = ({ shortName, description, _id, even
                 </div>
                 <div className='py-4 space-y-2'>
                     <h1 className='text-xl font-semibold text-center text-[#121289]'>{shortName}</h1>
-                    <div className='text-gray-800 line-clamp-4' dangerouslySetInnerHTML={{ __html: description }} />
+                    <div className='text-gray-800 line-clamp-3' dangerouslySetInnerHTML={{ __html: description }} />
                 </div>
             </div>
             <div className='absolute bottom-0 w-full'>
