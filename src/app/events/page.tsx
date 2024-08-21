@@ -36,6 +36,7 @@ const Events: React.FC = async () => {
 
   const checkEvent = (status: boolean) => {
     const ele = events.filter((e: eventCardType) => e.isCompleted === status);
+   
     if (ele.length === 0) return false;
     return true;
   };

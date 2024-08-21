@@ -10,6 +10,7 @@ export async function generateMetadata() {
     },
   });
   const { photos } = await res.json();
+  
   return {
     title: "Gallery",
     openGraph: {
