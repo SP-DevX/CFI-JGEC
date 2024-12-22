@@ -15,7 +15,7 @@
 }
 .modal-back {
   background: rgb(249,196,47);
-  background: linear-gradient(180deg, rgba(249,196,47,1) 2%, rgba(249,196,47,1) 81%, rgba(249,196,47,0.6167717086834734) 94%);
+  background: linear-gradient(180deg, rgb(233, 198, 1) 2%, rgb(231, 192, 88) 81%, rgba(229, 176, 30, 0.617) 94%);
 }
 .img{
   width: 100%;
