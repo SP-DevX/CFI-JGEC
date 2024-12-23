@@ -54,7 +54,7 @@ const Modal: React.FC<props> = ({ eventId }) => {
 			<div
 				className="modal"
 				role="dialog">
-				<div className="xl:w-[60%]  2xl:h-[80vh] modal-box p-0 overflow-hidden  md:h-[75vh]  xs:h-[70vh] xxs:h-[70vh] h-[70vh] lg:h-[70vh] xl:h-[70vh] bg-white">
+				<div className="xl:w-[35%]  2xl:h-[80vh] modal-box p-0 overflow-hidden  md:h-[75vh]  xs:h-[70vh] xxs:h-[70vh] h-[70vh] lg:h-[70vh] xl:h-[70vh] bg-white">
 					<div className="modal-back py-4 flex items-center flex-col lg:gap-8 gap-6 justify-evenly curve h-[95%] w-full">
 						<div className="text-xl">
 							<div className="flex modal_text">
@@ -96,7 +96,7 @@ const Modal: React.FC<props> = ({ eventId }) => {
 											<Image
 												src={silver_badge}
 												alt="First_Badge"
-												className="absolute w-10 md:top-[3em] top-[2em]"
+												className="absolute w-10 md:top-[3em] sm:top-[2em] lg:top-[3em]"
 											/>
 										</div>
 									</div>
@@ -117,7 +117,7 @@ const Modal: React.FC<props> = ({ eventId }) => {
 											<Image
 												src={first_badge}
 												alt="First_Badge"
-												className="absolute w-14  lg:top-[3em]"
+												className="absolute w-14  lg:top-[4em]"
 											/>
 										</div>
 									</div>
@@ -138,7 +138,7 @@ const Modal: React.FC<props> = ({ eventId }) => {
 											<Image
 												src={bronze_badge}
 												alt="First_Badge"
-												className="absolute w-12 md:top-[3em] top-[2em]"
+												className="absolute w-12 md:top-[3em] top-[2em] lg:top-[3em]"
 											/>
 										</div>
 									</div>
