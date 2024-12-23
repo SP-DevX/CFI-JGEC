@@ -18,7 +18,7 @@ const Modal: React.FC<props> = ({ eventId }) => {
 		setLoading(true);
 		try {
 			const { data } = await axios.get(
-				`${process.env.NEXT_PUBLIC_API_URL}/event/register/teams/${eventId}`
+				`${process.env.NEXT_PUBLIC_API_URL}/event/result/${eventId}`
 			);
 			setTeams(data);
 		} catch (error: any) {
