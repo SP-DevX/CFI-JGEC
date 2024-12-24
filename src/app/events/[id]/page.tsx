@@ -153,7 +153,7 @@ const ParticularEvent: React.FC<{ params: { id: string } }> = async ({
                                 </div>
                                 {
                                     isCompleted &&
-                                    <PostEvent />
+                                    <PostEvent eventId={_id}/>
                                 }
                             </div>
                         </div>
