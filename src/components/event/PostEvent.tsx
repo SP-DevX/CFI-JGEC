@@ -40,7 +40,7 @@ const PostEvent: React.FC<props> = ({eventId}) => {
 					<Link href={`/gallery`}>
 					<button
 						className="btn w-48 xxs:w-60">
-						Event Gallery
+						Events Gallery
 					</button>
 					</Link>
 				</div>
