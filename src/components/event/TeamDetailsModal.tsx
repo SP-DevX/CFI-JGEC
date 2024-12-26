@@ -70,7 +70,7 @@ const TeamDetailsModal: React.FC<props> = ({ open, closed, fields, data }) => {
 								
 							</Table.Head>
 							<Table.Body className="divide-y">
-								{data?.members.map((team, index) => (
+								{data?.members.map((team:any, index:any) => (
 									<Table.Row
 										key={index}
 										className="capitalize hover:bg-[#bdbdbd61] cursor-pointer duration-200"
