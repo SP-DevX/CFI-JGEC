@@ -16,26 +16,21 @@ const PostEvent: React.FC<props> = ({eventId}) => {
 		<>
 			<div className="flex flex-col mt-6 gap-y-2">
 				<div className=" sm:mb-3">
-					{/* <Link href={`/winner/icic-2023`}> */}
-					{/* <button
-						className="btn w-48  xxs:w-60"
-						onClick={() => setshow(!show)}>
-						View Result
-					</button> */}
+					{/* Results */}
 					<Modal eventId={eventId}/>
-					{/* </Link> */}
+					
 				</div>
-				{/* <div className=" sm:mb-3"> */}
-					{/* <Link href={`/certificate/${_id}`} > */}
-					{/* <button
+				{/* <div className=" sm:mb-3">
+					<Link href={`/certificate/${_id}`} >
+					<button
 						className="btn w-48  xxs:w-60"
 						onClick={() =>
 							toast.success("Certificates will be available soon")
 						}>
 						Certificates
-					</button> */}
-					{/* </Link> */}
-				{/* </div> */}
+					</button> 
+					</Link>
+				</div> */}
 				<div className=" sm:mb-3">
 					<Link href={`/gallery`}>
 					<button
