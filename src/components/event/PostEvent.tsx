@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { MdDownload } from "react-icons/md";
 import Modal from "./Modal";
+import Link from "next/link";
 
 type props = {
 	eventId: string;
@@ -24,25 +25,24 @@ const PostEvent: React.FC<props> = ({eventId}) => {
 					<Modal eventId={eventId}/>
 					{/* </Link> */}
 				</div>
-				<div className=" sm:mb-3">
+				{/* <div className=" sm:mb-3"> */}
 					{/* <Link href={`/certificate/${_id}`} > */}
-					<button
+					{/* <button
 						className="btn w-48  xxs:w-60"
 						onClick={() =>
 							toast.success("Certificates will be available soon")
 						}>
 						Certificates
-					</button>
+					</button> */}
 					{/* </Link> */}
-				</div>
+				{/* </div> */}
 				<div className=" sm:mb-3">
-					{/* <Link href={`/gallery`}> */}
+					<Link href={`/gallery`}>
 					<button
-						className="btn w-48 xxs:w-60"
-						onClick={() => toast.success("Gallery will be available soon")}>
-						Event Gallery
+						className="btn w-48 xxs:w-60">
+						Events Gallery
 					</button>
-					{/* </Link> */}
+					</Link>
 				</div>
 			</div>
 		</>
